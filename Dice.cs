@@ -10,19 +10,20 @@ namespace ConsoleDiceCounter
     {
         private int numberOfSides;
         private int numberOfDice;
+        private Random random;
 
         public Dice(int numberOfSides, int numberOfDice)
         {
             this.numberOfSides = numberOfSides;
             this.numberOfDice = numberOfDice;
+            random = new Random();
         }
 
         public int roll()
         {
-            Random rnd = new Random();
             int roll = 0;
             for (int i = 0; i < numberOfDice; i++)
-                roll += rnd.Next(1, numberOfSides + 1);
+                roll += random.Next(1, numberOfSides + 1);
             return roll;
         }
     }
