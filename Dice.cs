@@ -8,22 +8,24 @@ namespace ConsoleDiceCounter
 {
     internal class Dice
     {
-        private int numberOfSides;
-        private int numberOfDice;
-        private Random random;
+        private int _numberOfSides;
+        private int _numberOfDice;
+        private Random _random;
+        public int NumberOfSides { get { return _numberOfSides; } }
+        public int NumberOfDice { get { return _numberOfDice; } }
 
         public Dice(int numberOfSides, int numberOfDice)
         {
-            this.numberOfSides = numberOfSides;
-            this.numberOfDice = numberOfDice;
-            random = new Random();
+            _numberOfSides = numberOfSides;
+            _numberOfDice = numberOfDice;
+            _random = new Random();
         }
 
-        public int roll()
+        public int Roll()
         {
             int roll = 0;
-            for (int i = 0; i < numberOfDice; i++)
-                roll += random.Next(1, numberOfSides + 1);
+            for (int i = 0; i < _numberOfDice; i++)
+                roll += _random.Next(1, _numberOfSides + 1);
             return roll;
         }
     }
