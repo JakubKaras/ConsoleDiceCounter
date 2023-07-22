@@ -12,20 +12,23 @@ namespace ConsoleDiceCounter
         private int _score;
         private int _consecutiveZeros;
         private List<int> _throws;
-        private int _numOfThrowsToQuickDeath;
         public string Name { get { return _name; } }
         public int Score { get { return _score; } }
+        public int ConsecutiveZeros { get { return _consecutiveZeros; } }
 
-        public Player(string name, int numOfThrowsToQuickDeath)
+        public Player(string name)
         {
             _name = name;
-            _numOfThrowsToQuickDeath = numOfThrowsToQuickDeath;
             _throws = new List<int>();
             _score = 0;
             _consecutiveZeros = 0;
         }
 
-        private bool IsPlayerDead() { return _consecutiveZeros == _numOfThrowsToQuickDeath;}
+        public void ResetScore()
+        { 
+            _score = 0;
+            _consecutiveZeros = 0;
+        }
 
         public void IncreaseScore(int addend)
         {
@@ -33,12 +36,6 @@ namespace ConsoleDiceCounter
             if (addend == 0)
             { 
                 _consecutiveZeros++;
-            }
-            if (this.IsPlayerDead())
-            {
-                _score = 0;
-                _consecutiveZeros = 0;
-                return;
             }
             _score += addend;
         }
